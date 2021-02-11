@@ -35,21 +35,6 @@ export class userComponent extends Component {
         console.log(error);
       })
   }
-  /*componentDidMount = () =>{
-    this.getUserPost();
-  }
-
-  getUserPost = () => {
-    axios.get('http://localhost:8081/memes/')
-      .then((response) => {
-        const data = response.data;
-        this.setState({ users: data });
-        console.log('Data has been received!!' + this.state.users[0]);
-      })
-      .catch(() => {
-        alert('Error retrieving data!!!');
-      });
-  }*/
     
   onChangeUsername(e) {
     this.setState({
@@ -92,7 +77,6 @@ export class userComponent extends Component {
     catch(err){
       alert(err,err.status);
       console.log(err.status);
-      //window.location = '/edit/' + this.props.match.params.id;
       return (
         <Router>
           <Route path="/user" exact component={userComponent} />
@@ -103,7 +87,6 @@ export class userComponent extends Component {
 
     axios.post('http://localhost:8081/memes/add', user)
           .then(res => {console.log(res.data);});
-          //.then(()=>{this.getUserPost();})
             
     this.setState({
       username: '',
@@ -112,27 +95,6 @@ export class userComponent extends Component {
     })
     window.location = '/';
   }
-/* Display user on same page
-  displayUserPost = (posts) => {
-    const style = {
-      width: '50%',
-      height: '200px'
-    }
-
-    if (!posts.length) return null;
-        
-    const post = posts.sort((a,b) => new Date(b.updatedAt) - new Date(a.updatedAt));
-    console.log(posts);
-    return post.map((poste, index) => (
-      //post.sort((a,b) => a.updatedAt - b.updatedAt);
-      <div key={index} className="blog-post__display">
-      <h4>{poste.username}</h4>
-      <h4>{poste.caption}</h4>
-      <img style ={style} src = {poste.url} alt = ''/>
-      </div>
-    ));
-  };
-*/
 
     render() {
         return (
