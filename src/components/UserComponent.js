@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
+
 
 export class userComponent extends Component {
   constructor(props){
@@ -14,7 +16,8 @@ export class userComponent extends Component {
       username: '',
       caption: '',
       url: '',
-      users: []
+      users: [],
+      userList: []
     }
   }
 
@@ -23,8 +26,8 @@ export class userComponent extends Component {
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
-            users: response.data.map(user => user.username),
-            username: response.data[0].username
+            userList: response.data,
+            users: response.data.map(user => user.username)
           })
         }
       })
@@ -68,13 +71,34 @@ export class userComponent extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    
+    var i;
     const user = {
       username: this.state.username,
       caption: this.state.caption,
       url: this.state.url
     }
-
+    try{
+      for(i=0; i < this.state.userList.length; i++)
+      {
+        if(this.state.userList[i].url === this.state.url || this.state.userList[i].caption === this.state.caption)
+        {
+          let err = new Error("Meme already exists");
+          err.status = 409;
+          throw err;
+        }
+      }
+    }
+    
+    catch(err){
+      alert(err,err.status);
+      console.log(err.status);
+      //window.location = '/edit/' + this.props.match.params.id;
+      return (
+        <Router>
+          <Route path="/user" exact component={userComponent} />
+        </Router>)
+    }
+    
     console.log(user);
 
     axios.post('http://localhost:8081/memes/add', user)

@@ -70,7 +70,7 @@ export class EditUserMeme extends Component {
     onSubmit(e) {
         e.preventDefault();
         try{
-            if(this.state.prevUrl == this.state.url)
+            if(this.state.prevUrl === this.state.url)
             {
                 let err = new Error("Duplicate Url");
                 err.status = 409;
