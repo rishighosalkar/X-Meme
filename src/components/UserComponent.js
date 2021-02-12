@@ -102,7 +102,6 @@ export class userComponent extends Component {
 
     axios.post('https://xmeme-mern.herokuapp.com/memes/add', user)
           .then(res => {console.log(res.data);});
-          //.then(()=>{this.getUserPost();})
             
     this.setState({
       username: '',
