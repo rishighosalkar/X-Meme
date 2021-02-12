@@ -9,7 +9,6 @@ import UsersList from './components/UsersList';
 
 function App() {
   return (
-    //<UserComponent />
     <Router>
       <div className="container">
       <Navbar />
