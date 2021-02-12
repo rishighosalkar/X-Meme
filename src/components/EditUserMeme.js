@@ -22,7 +22,7 @@ export class EditUserMeme extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8081/memes/'+this.props.match.params.id)
+        axios.get('https://xmeme-mern.herokuapp.com/memes'+this.props.match.params.id)
           .then(response => {
             this.setState({
               username: response.data.username,
@@ -35,7 +35,7 @@ export class EditUserMeme extends Component {
             console.log(error);
           })
 
-          axios.get('http://localhost:8081/memes/')
+          axios.get('https://xmeme-mern.herokuapp.com/memes')
                 .then(response => {
             if (response.data.length > 0) {
             this.setState({
@@ -84,7 +84,7 @@ export class EditUserMeme extends Component {
                 }
                 //alert(this.state.url);
                 console.log(user);
-                axios.patch('http://localhost:8081/memes/update/' + this.props.match.params.id, user)
+                axios.patch('https://xmeme-mern.herokuapp.com/memes/update/' + this.props.match.params.id, user)
                       .then(res => console.log(res.data));
           
                 window.location = '/';  

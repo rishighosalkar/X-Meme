@@ -25,7 +25,7 @@ export class UsersList extends Component {
     }
       
     componentDidMount() {
-        axios.get('http://localhost:8081/memes/')
+        axios.get('https://xmeme-mern.herokuapp.com/memes')
         .then(response => {
             this.setState({ users: response.data })
         })
@@ -35,7 +35,7 @@ export class UsersList extends Component {
     }
 
     deleteUser(id) {
-        axios.delete('http://localhost:8081/memes/'+id)
+        axios.delete('https://xmeme-mern.herokuapp.com/memes'+id)
           .then(response => { console.log(response.data)});
     
         this.setState({
@@ -73,8 +73,4 @@ export class UsersList extends Component {
     }
 }
 
-export default UsersList
-/* 
-<td>{props.user.username}</td>
-      <td>{props.user.caption}</td>
-      */
+export default UsersList;

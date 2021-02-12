@@ -22,7 +22,7 @@ export class userComponent extends Component {
   }
 
   componentDidMount(){
-    axios.get('http://localhost:8081/memes/')
+    axios.get('https://xmeme-mern.herokuapp.com/memes')
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
@@ -40,7 +40,7 @@ export class userComponent extends Component {
   }
 
   getUserPost = () => {
-    axios.get('http://localhost:8081/memes/')
+    axios.get('https://xmeme-mern.herokuapp.com/memes')
       .then((response) => {
         const data = response.data;
         this.setState({ users: data });
@@ -100,7 +100,7 @@ export class userComponent extends Component {
     
     console.log(user);
 
-    axios.post('http://localhost:8081/memes/add', user)
+    axios.post('https://xmeme-mern.herokuapp.com/memes/add', user)
           .then(res => {console.log(res.data);});
           //.then(()=>{this.getUserPost();})
             
