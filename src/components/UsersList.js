@@ -35,7 +35,7 @@ export class UsersList extends Component {
     }
 
     deleteUser(id) {
-        axios.delete('https://xmeme-mern.herokuapp.com/memes'+id)
+        axios.delete('https://xmeme-mern.herokuapp.com/memes/'+id)
           .then(response => { console.log(response.data)});
     
         this.setState({

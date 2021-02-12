@@ -22,7 +22,7 @@ export class EditUserMeme extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://xmeme-mern.herokuapp.com/memes'+this.props.match.params.id)
+        axios.get('https://xmeme-mern.herokuapp.com/memes/'+this.props.match.params.id)
           .then(response => {
             this.setState({
               username: response.data.username,

@@ -25,9 +25,11 @@ export class userComponent extends Component {
     axios.get('https://xmeme-mern.herokuapp.com/memes')
       .then(response => {
         if (response.data.length > 0) {
+          console.log(response.data);
           this.setState({
             userList: response.data,
-            users: response.data.map(user => user.username)
+            users: response.data.map(user => user.username),
+            username: user[0].username
           })
         }
       })
@@ -58,15 +60,19 @@ export class userComponent extends Component {
   }
 
   onChangeCaption(e) {
+    alert(e.target.value);
     this.setState({
       caption: e.target.value
     })
+    console.log(this.state.caption);
   }
 
   onChangeUrl(e) {
+    alert(e.target.value);
     this.setState({
       url: e.target.value
     })
+    console.log(this.state.url);
   }
 
   onSubmit(e) {
