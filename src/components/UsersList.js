@@ -8,7 +8,7 @@ const User = props => (
       <td>{props.user.caption}</td>
       <td><img style={{display:'flex',flexDirection:'row',height:'300px', width:'300px'}} src={props.user.url} alt =''/></td>
       <td>
-        <Link to={"/edit/"+props.user._id}>edit</Link> | <a href="#" onClick={() => { props.deleteUser(props.user._id) }}>delete</a>
+        <Link to={"/edit/"+props.user._id}>edit</Link> | <a href="#" onClick={() => {alert(props.user._id); props.deleteUser(props.user._id) }}>delete</a>
       </td>
     </tr>
   )
