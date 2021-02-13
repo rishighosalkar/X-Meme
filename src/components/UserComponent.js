@@ -60,19 +60,20 @@ export class userComponent extends Component {
   }
 
   onChangeCaption(e) {
-    alert(e.target.value);
+    //alert(e.target.value);
     this.setState({
       caption: e.target.value
     })
-    console.log(this.state.caption);
+    //console.log(this.state.caption);
   }
 
   onChangeUrl(e) {
-    alert(e.target.value);
+    //alert(e.target.value);
+    var url = "" + e.target.value;
+    //console.log(url);
     this.setState({
-      url: String(e.target.value)
+      url: url
     })
-    console.log(this.state.url);
   }
 
   onSubmit(e) {
