@@ -70,7 +70,7 @@ export class userComponent extends Component {
   onChangeUrl(e) {
     alert(e.target.value);
     this.setState({
-      url: e.target.value
+      url: String(e.target.value)
     })
     console.log(this.state.url);
   }
