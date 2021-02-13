@@ -37,22 +37,7 @@ export class userComponent extends Component {
         console.log(error);
       })
   }
-  /*componentDidMount = () =>{
-    this.getUserPost();
-  }
 
-  getUserPost = () => {
-    axios.get('https://xmeme-mern.herokuapp.com/memes')
-      .then((response) => {
-        const data = response.data;
-        this.setState({ users: data });
-        console.log('Data has been received!!' + this.state.users[0]);
-      })
-      .catch(() => {
-        alert('Error retrieving data!!!');
-      });
-  }*/
-    
   onChangeUsername(e) {
     this.setState({
       username: e.target.value
@@ -118,27 +103,6 @@ export class userComponent extends Component {
     }
     
   }
-/* Display user on same page
-  displayUserPost = (posts) => {
-    const style = {
-      width: '50%',
-      height: '200px'
-    }
-
-    if (!posts.length) return null;
-        
-    const post = posts.sort((a,b) => new Date(b.updatedAt) - new Date(a.updatedAt));
-    console.log(posts);
-    return post.map((poste, index) => (
-      //post.sort((a,b) => a.updatedAt - b.updatedAt);
-      <div key={index} className="blog-post__display">
-      <h4>{poste.username}</h4>
-      <h4>{poste.caption}</h4>
-      <img style ={style} src = {poste.url} alt = ''/>
-      </div>
-    ));
-  };
-*/
 
     render() {
         return (

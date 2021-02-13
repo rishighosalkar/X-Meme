@@ -2,12 +2,12 @@ const router = require('express').Router();
 let User = require("../models/user");
 let methods;
 
-router.get('/', (req, res) => {
-    User.find()
+router.get('/', async(req, res) => {
+    await User.find()
     .then(users => res.json(users))
     .catch(err => res.status(400).json('Error: ' + err));
 });
-router.post('/', (req, res) =>
+router.post('/', async(req, res) =>
 {
     const username = req.body.username;
     const caption = req.body.caption;
@@ -19,26 +19,26 @@ router.post('/', (req, res) =>
         url,
     });
 
-    newUser.save()
+    await newUser.save()
     .then(() => res.json('User add'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 
-router.route('/:id').get((req, res) => {
-    User.findById(req.params.id)
+router.get('/:id', async(req, res) => {
+    await User.findById(req.params.id)
     .then(users => res.json(users))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/:id').delete((req, res) => {
-    User.findByIdAndDelete(req.params.id)
+router.delete('/:id', async(req, res) => {
+    await User.findByIdAndDelete(req.params.id)
     .then(() => res.json('User deleted'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/update/:id').patch((req, res) => {
-    User.findById(req.params.id)
+router.patch('/update/:id',async(req, res) => {
+    await User.findById(req.params.id)
     .then(users => {
         if(users.caption == req.body.caption ){
             let err = new Error("Duplicate username");
