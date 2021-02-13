@@ -70,10 +70,11 @@ export class userComponent extends Component {
   onChangeUrl(e) {
     //alert(e.target.value);
     var url = "" + e.target.value;
-    //console.log(url);
+    console.log(url);
     this.setState({
       url: url
     })
+    console.log(this.state.url);
   }
 
   onSubmit(e) {
@@ -94,7 +95,18 @@ export class userComponent extends Component {
           throw err;
         }
       }
-    }
+      console.log(user);
+
+      axios.post('https://xmeme-mern.herokuapp.com/memes/', user)
+            .then(res => {console.log(res.data);});
+              
+      this.setState({
+        username: '',
+        caption: '',
+        url: ''
+      })
+      window.location = '/';
+      }
     
     catch(err){
       alert(err,err.status);
@@ -105,17 +117,6 @@ export class userComponent extends Component {
         </Router>)
     }
     
-    console.log(user);
-
-    axios.post('https://xmeme-mern.herokuapp.com/memes/add', user)
-          .then(res => {console.log(res.data);});
-            
-    this.setState({
-      username: '',
-      caption: '',
-      url: ''
-    })
-    window.location = '/';
   }
 /* Display user on same page
   displayUserPost = (posts) => {

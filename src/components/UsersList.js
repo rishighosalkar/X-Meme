@@ -25,7 +25,7 @@ export class UsersList extends Component {
     }
       
     componentDidMount() {
-        axios.get('https://xmeme-mern.herokuapp.com/memes')
+        axios.get('https://xmeme-mern.herokuapp.com/memes/')
         .then(response => {
             this.setState({ users: response.data })
         })
