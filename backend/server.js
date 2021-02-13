@@ -11,10 +11,16 @@ const port = process.env.PORT || 8081;
 app.use(cors());
 app.use(express.json());
 
-const uri = process.env.ATLAS_URI;
-//const uri = "mongodb://localhost:27017/users";
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
-
+const cloud_uri = process.env.ATLAS_URI;
+const local_uri = "mongodb://localhost:27017/users";
+console.log(process.env.NODE_ENV)
+if(process.NODE_ENV === 'production')
+{
+  mongoose.connect(local_uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
+  console.log("Done")
+}
+else if(process.env.NODE_ENV === 'development')
+  mongoose.connect(cloud_uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
 
 const connection = mongoose.connection;
 connection.once('open', () => {

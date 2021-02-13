@@ -29,7 +29,7 @@ export class userComponent extends Component {
           this.setState({
             userList: response.data,
             users: response.data.map(user => user.username),
-            username: user[0].username
+            username: response.data[0].username
           })
         }
       })
