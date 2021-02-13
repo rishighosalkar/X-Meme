@@ -22,7 +22,7 @@ export class userComponent extends Component {
   }
 
   componentDidMount(){
-    axios.get('https://xmeme-mern.herokuapp.com/memes')
+    axios.get('https://xmeme-mern.herokuapp.com/memes/')
       .then(response => {
         if (response.data.length > 0) {
           console.log(response.data);
@@ -64,12 +64,13 @@ export class userComponent extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    var i;
+    /*var i;
     const user = {
       username: this.state.username,
       caption: this.state.caption,
       url: this.state.url
     }
+    alert(user.url);
     try{
       for(i=0; i < this.state.userList.length; i++)
       {
@@ -80,17 +81,6 @@ export class userComponent extends Component {
           throw err;
         }
       }
-      console.log(user);
-
-      axios.post('https://xmeme-mern.herokuapp.com/memes/', user)
-            .then(res => {console.log(res.data);});
-              
-      this.setState({
-        username: '',
-        caption: '',
-        url: ''
-      })
-      window.location = '/';
       }
     
     catch(err){
@@ -101,7 +91,25 @@ export class userComponent extends Component {
           <Route path="/user" exact component={userComponent} />
         </Router>)
     }
-    
+    */
+    const log_user = {
+      username: this.state.username,
+      caption: this.state.caption,
+      url: this.state.url
+    }
+    console.log(log_user);
+
+      axios.post('https://xmeme-mern.herokuapp.com/memes/',log_user)
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => alert('Error: ' + err));
+              
+      this.setState({
+        username: '',
+        caption: '',
+        url: ''
+      })
+      window.location = '/';
   }
 
     render() {
@@ -137,7 +145,7 @@ export class userComponent extends Component {
                     />
                 </div>
                 <div className="form-group">
-                    <input type="submit" value="Upload Meme" className="btn btn-primary" />
+                    <input type="submit" value="Upload Meme" className="btn btn-primary" onClick = {this.onSubmit}/>
                 </div>
                 </form>
                 <div className="blog-">

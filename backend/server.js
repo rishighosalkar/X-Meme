@@ -25,7 +25,7 @@ else
   console.log('connected to local');
 } 
 */
-mongoose.connect(local_uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
+mongoose.connect(cloud_uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 console.log('connected to cloud');
 
 const connection = mongoose.connection;
