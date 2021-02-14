@@ -54,7 +54,7 @@ export class userComponent extends Component {
 
   onChangeUrl(e) {
     this.setState({
-      url: e.target.value;
+      url: e.target.value
     })
     console.log(this.state.url);
   }
