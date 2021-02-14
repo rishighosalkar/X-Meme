@@ -16,12 +16,12 @@ const local_uri = "mongodb://localhost:27017/users";
 //console.log(process.env.NODE_ENV);
 /*if(process.env.NODE_ENV === 'development')
 {
-  mongoose.connect(cloud_uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
+  mongoose.connect(local_uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
   console.log('connected to cloud');
 }
 else
 {
-  mongoose.connect(local_uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
+  mongoose.connect(cloud_uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
   console.log('connected to local');
 } 
 */
