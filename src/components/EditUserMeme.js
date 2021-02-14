@@ -17,7 +17,8 @@ export class EditUserMeme extends Component {
             caption: '',
             url: '',
             prevUrl: '',
-            users: []
+            users: [],
+            userList: []
         }
     }
 
@@ -39,6 +40,7 @@ export class EditUserMeme extends Component {
                 .then(response => {
             if (response.data.length > 0) {
             this.setState({
+                userList: response.data,
                 users: response.data.map(user => user.username),
             })
             }
@@ -69,36 +71,37 @@ export class EditUserMeme extends Component {
 
     onSubmit(e) {
         e.preventDefault();
+        var i;
+        const user = {
+            //username: this.state.username,
+            caption: this.state.caption,
+            url: this.state.url
+        }
         try{
-            if(this.state.prevUrl === this.state.url)
+            for(i=0; i < this.state.userList.length; i++)
             {
-                let err = new Error("Duplicate Url");
-                err.status = 409;
-                throw err;
-            }
-            else{
-                const user = {
-                    //username: this.state.username,
-                    caption: this.state.caption,
-                    url: this.state.url
+                if(this.state.userList[i].url === this.state.url )
+                {
+                let meme_err = new Error("Meme already exists");
+                meme_err.status = 409;
+                throw meme_err;
                 }
-                //alert(this.state.url);
-                console.log(user);
-                axios.patch('https://xmeme-mern.herokuapp.com/memes/update/' + this.props.match.params.id, user)
-                      .then(res => console.log(res.data));
-          
-                window.location = '/';  
             }
         }
         catch(err){
             alert(err,err.status);
             console.log(err.status)
-            //window.location = '/edit/' + this.props.match.params.id;
             return (
             <Router>
                 <Route path="/edit/:id" exact component={EditUserMeme} />
             </Router>)
         }
+
+        console.log(user);
+        axios.patch('https://xmeme-mern.herokuapp.com/memes/update/' + this.props.match.params.id, user)
+              .then(res => console.log(res.data));
+  
+        window.location = '/';
     }
     render() {
         return (

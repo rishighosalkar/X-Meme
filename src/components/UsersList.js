@@ -6,7 +6,7 @@ const User = props => (
     <tr>
       <td>{props.user.username}</td>
       <td>{props.user.caption}</td>
-      <td><img style={{display:'flex',flexDirection:'row',height:'300px', width:'300px'}} src={props.user.url} alt =''/></td>
+      <td><img style={{display:'flex',flexDirection:'row',height:'300px', width:'300px'}} src={props.user.url} /></td>
       <td>
         <Link to={"/edit/"+props.user._id}>edit</Link> | <a href="#" onClick={() => {alert(props.user._id); props.deleteUser(props.user._id) }}>delete</a>
       </td>

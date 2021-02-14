@@ -44,11 +44,11 @@ curl --location --request POST 'http://localhost:8081/memes' \
 
 --data-raw '{
 
-"username": "xyz",
+"username": "Ryan",
 
 "caption": "This is a meme",
 
-"url": "abc.com"
+"url": "https://3c534w2w7sa3ma8ved14ax12-wpengine.netdna-ssl.com/wp-content/uploads/2020/07/Copy-of-Untitled-2020-07-08T105340.290-1080x630.png"
 
 }'
 
